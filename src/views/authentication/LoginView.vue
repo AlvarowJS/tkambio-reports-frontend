@@ -63,7 +63,8 @@ const login = async () => {
     justify-content: center;
     align-items: center;
     align-content: center;
-    height: 100vh
+    height: 100vh;
+    background-color: $secondary-color;
 }
 
 .login__card {
@@ -71,6 +72,7 @@ const login = async () => {
     padding: 20px;
     border-radius: 30px;
     width: 80%;
+    background-color: #ffffff;
 }
 
 .login__card-credentials p{

@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import tkambioApi from '../api/tkambioApi'  // Asegúrate de importar tu API aquí
 import ReportView from '../views/reports/ReportView.vue'
 import LoginView from '../views/authentication/LoginView.vue'
@@ -23,7 +23,7 @@ const routes = [
 ]
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes,
 })
 
@@ -32,20 +32,19 @@ router.beforeEach(async (to, from, next) => {
 
     if (to.matched.some(record => record.meta.requiresAuth)) {
         if (!token) {
-            return next('/login') // 🔴 Redirigir si no hay token
+            return next('/login')
         }
-
         try {
             const response = await tkambioApi.get('/validate-token', getAuthHeaders()) // ✅ Cambiar a GET
             if (response.data) {
-                return next() // ✅ Si el token es válido, continuar
+                return next()
             } else {
                 localStorage.removeItem('token')
-                return next('/login') // 🔴 Redirigir si el token no es válido
+                return next('/login')
             }
         } catch (error) {
             localStorage.removeItem('token')
-            return next('/login') // 🔴 Redirigir si la API falla
+            return next('/login')
         }
     }
 
