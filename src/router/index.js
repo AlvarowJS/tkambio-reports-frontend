@@ -29,28 +29,28 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
     const token = localStorage.getItem('token')
+
     if (to.matched.some(record => record.meta.requiresAuth)) {
         if (!token) {
-            return next('/login')
+            return next('/login') // 🔴 Redirigir si no hay token
         }
+
         try {
-            const response = await tkambioApi.post('/validate-token', "", getAuthHeaders())            
-            if (response) {
-                next()
+            const response = await tkambioApi.get('/validate-token', getAuthHeaders()) // ✅ Cambiar a GET
+            if (response.data) {
+                return next() // ✅ Si el token es válido, continuar
             } else {
                 localStorage.removeItem('token')
-                setTimeout(() => {
-                    return next('/login')
-                }, 100)
-
+                return next('/login') // 🔴 Redirigir si el token no es válido
             }
         } catch (error) {
             localStorage.removeItem('token')
-            return next('/login')
+            return next('/login') // 🔴 Redirigir si la API falla
         }
     }
 
-    return next('/report')
+    next()
 })
+
 
 export default router
