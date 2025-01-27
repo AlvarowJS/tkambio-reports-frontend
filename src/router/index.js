@@ -35,7 +35,7 @@ router.beforeEach(async (to, from, next) => {
             return next('/login')
         }
         try {
-            const response = await tkambioApi.get('/validate-token', getAuthHeaders()) // ✅ Cambiar a GET
+            const response = await tkambioApi.get('/validate-token', getAuthHeaders())
             if (response.data) {
                 return next()
             } else {
