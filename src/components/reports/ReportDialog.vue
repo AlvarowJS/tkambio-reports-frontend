@@ -97,46 +97,5 @@ defineExpose({
 })
 </script>
 <style lang="scss" scoped>
-.button-disabled {
-    background-color: #CFCFCF;
-    cursor: not-allowed;
-    margin-top: 10px;
-}
-
-.button-enabled {
-    background-color: #ffbe12;
-    cursor: pointer;
-    margin-top: 10px;
-}
-.report__form p{
-    color: #696969;
-    text-align: left;
-    font-size: 12px;
-    font-weight: 400;
-}
-.report__form-inputs {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-
-.report__input-container {
-    position: relative;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-
-
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: 999;
-}
+@use './Report.scss';
 </style>

@@ -56,38 +56,5 @@ const login = async () => {
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/styles/colors';
-
-.login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    height: 100vh;
-    background-color: $secondary-color;
-}
-
-.login__card {
-    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 20px;
-    border-radius: 30px;
-    width: 80%;
-    background-color: #ffffff;
-}
-
-.login__card-credentials p{
-    color: $title-color;
-    font-size: 12px;
-}
-.login__card-error{
-    color: red;
-    font-size: 12px;
-}
-
-.login__card-container {
-    position: relative;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    width: 100%;
-}
+@import './LoginView.scss';
 </style>
