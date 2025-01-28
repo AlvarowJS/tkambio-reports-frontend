@@ -106,7 +106,11 @@ onMounted(fetchReports)
     margin: 0px 10%;
     border-radius: 10px;
 }
-
+@media (max-width: 768px) {
+    .report__table {
+        margin: 0px 2%;
+    }
+}
 .report__table table {
     width: 100%;
     border-collapse: collapse;
